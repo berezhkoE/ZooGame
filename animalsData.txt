@@ -1,0 +1,7 @@
+Lion meat 4 20
+Tiger meat 3 30
+Cow hay 4 25
+Sheep hay 2 15
+Elephant hay 18 70
+Monkey fruit 3 50
+Parrot grain 1 5

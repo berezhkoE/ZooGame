@@ -1,0 +1,4 @@
+meat 100
+hay 200
+fruit 70
+grain 50
