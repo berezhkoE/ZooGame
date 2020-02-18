@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Animalistic {
@@ -9,19 +10,19 @@ public abstract class Animalistic {
         throw new UnsupportedOperationException();
     }
 
-    public Animalistic getChild(int i) {
+    public void addFood(String name, int N) {
         throw new UnsupportedOperationException();
     }
 
-    public void addFood(int N) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void takeFood(int N) {
+    public void takeFood(String name, int N) {
         throw new UnsupportedOperationException();
     }
 
     public HashMap<String, Integer> getFoodStatus() {
+        throw new UnsupportedOperationException();
+    }
+
+    public ArrayList<Animalistic> getAnimals()  {
         throw new UnsupportedOperationException();
     }
 
