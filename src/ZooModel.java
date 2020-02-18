@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.*;
 
 public class ZooModel implements ZooModelInterface {
-    ArrayList<ZooObserver> zooObservers = new ArrayList<ZooObserver>();
-    ArrayList<Animalistic> enclosures = new ArrayList<Animalistic>();
-    ArrayList<String[]> animalsData = new ArrayList<String[]>();
-    HashMap<String, Integer> storage = new HashMap<String, Integer>();
+    ArrayList<ZooObserver> zooObservers = new ArrayList<>();
+    ArrayList<Animalistic> enclosures = new ArrayList<>();
+    ArrayList<String[]> animalsData = new ArrayList<>();
+    HashMap<String, Integer> storage = new HashMap<>();
     int size = 0;
 
     public void initialize() {
@@ -62,7 +62,7 @@ public class ZooModel implements ZooModelInterface {
 
     public void notifyZooObservers() {
         for (ZooObserver zooObserver : zooObservers) {
-            ((ZooObserver) zooObserver).update();
+            zooObserver.update();
         }
     }
 
@@ -73,8 +73,8 @@ public class ZooModel implements ZooModelInterface {
         for (int i = 0; i < size; i++) {
             Animalistic e = new Enclosure(Integer.toString(i+1));
 
-            ArrayList<Integer> pos = new ArrayList<Integer>();
-            ArrayList<Integer> q = new ArrayList<Integer>();
+            ArrayList<Integer> pos = new ArrayList<>();
+            ArrayList<Integer> q = new ArrayList<>();
             for (int j = 0; j < random.nextInt(6) + 1; j++) {
                 int type = random.nextInt(animalsData.size());
                 if (!pos.contains(type)) {
@@ -110,7 +110,7 @@ public class ZooModel implements ZooModelInterface {
 
     public void feedAnimals(Animalistic e) {
         ArrayList<Animalistic> al = e.getAnimals();
-        ArrayList<Animalistic> d = new ArrayList<Animalistic>();
+        ArrayList<Animalistic> d = new ArrayList<>();
         for (Animalistic a : al) {
             int l = 0;
 
@@ -139,7 +139,6 @@ public class ZooModel implements ZooModelInterface {
     }
 
     public void extraFeed(Animalistic e) {
-        //ArrayList<Animalistic> al = (ArrayList<Animalistic>) e.getAnimals().clone();
         ArrayList<Animalistic> al = e.getAnimals();
         for (Animalistic a : al) {
             int l = 0;
@@ -182,7 +181,7 @@ public class ZooModel implements ZooModelInterface {
     public void increaseAge(Animalistic e) {
         ArrayList<Animalistic> al = e.getAnimals();
         for (Animalistic g: al) {
-            ArrayList<Animalistic> l = new ArrayList<Animalistic>();
+            ArrayList<Animalistic> l = new ArrayList<>();
             for (Animalistic a: g.getAnimals()) {
                 a.setCurrentAge(a.getCurrentAge() + 1);
                 if (a.getCurrentAge() >= a.getMaxAge()) {

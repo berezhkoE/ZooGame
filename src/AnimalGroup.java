@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class AnimalGroup extends Animalistic {
     String name;
-    ArrayList<Animalistic> animals = new ArrayList<Animalistic>();
+    ArrayList<Animalistic> animals = new ArrayList<>();
 
     public AnimalGroup (String name) {
         this.name = name;
@@ -13,7 +13,7 @@ public class AnimalGroup extends Animalistic {
         animals.add(animal);
     }
 
-    public void remove (Animalistic animal) {
+    public void remove(Animalistic animal) {
         animals.remove(animal);
     }
 

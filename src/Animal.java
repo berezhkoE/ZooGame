@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Animal extends Animalistic {
     String name;
-    HashMap<String, Integer> foodDemand = new HashMap<String, Integer>();
+    HashMap<String, Integer> foodDemand = new HashMap<>();
     int maxAge;
     int currentAge;
 

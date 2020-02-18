@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4069f64d-e1e1-453b-b85e-85c4bdafca15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AnimalGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animalistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animalistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AnimalGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimalGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Enclosure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enclosure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ZooModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZooModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ZooView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZooView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,52 +98,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582023219925" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1582031547802">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582031547802" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1582031547801">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582031547801" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1582031547801">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582031547801" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1582031547802">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582031547802" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1582031500560">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582031500560" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1582031500559">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582031500559" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1582031500559">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582031500559" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1582031500560">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1582033017804">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582031500560" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582033017804" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581969562571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581969562571" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ZooModel.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

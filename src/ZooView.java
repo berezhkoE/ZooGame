@@ -7,7 +7,7 @@ public class ZooView implements ZooObserver {
     public ZooView (ZooModelInterface model, ControllerInterface controller) {
         this.model = model;
         this.controller = controller;
-        model.registerObserver((ZooObserver)this);
+        model.registerObserver(this);
     }
 
     public void update() {

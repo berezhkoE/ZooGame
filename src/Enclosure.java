@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
 
 public class Enclosure extends Animalistic {
     String name;
 
-    ArrayList<Animalistic> animals = new ArrayList<Animalistic>();
-    HashMap<String, Integer> food = new HashMap<String, Integer>();
+    ArrayList<Animalistic> animals = new ArrayList<>();
+    HashMap<String, Integer> food = new HashMap<>();
 
     public Enclosure(String name) {
         this.name = name;
@@ -50,10 +48,7 @@ public class Enclosure extends Animalistic {
     public void print() {
         System.out.print("\nEnclosure " + getName());
         System.out.print(": ");
-        Iterator<Animalistic> iterator = animals.iterator();
-        while (iterator.hasNext()) {
-            Animalistic animalistic =
-                    iterator.next();
+        for (Animalistic animalistic : animals) {
             animalistic.print();
         }
         System.out.print("                                 Food: " );
