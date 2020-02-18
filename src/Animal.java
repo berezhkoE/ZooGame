@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Random;
 
 public class Animal extends Animalistic {
     String name;
@@ -12,8 +13,8 @@ public class Animal extends Animalistic {
             this.foodDemand.put(args[i], Integer.parseInt(args[(args.length - 2)/2 + i]));
         }
         this.maxAge = Integer.parseInt(args[args.length-1]);
-        //Random random = new Random();
-        //this.currentAge = random.nextInt(maxAge);
+        Random random = new Random();
+        this.currentAge = random.nextInt(maxAge);
     }
 
     public String getName() {

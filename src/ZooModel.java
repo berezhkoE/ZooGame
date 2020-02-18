@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class ZooModel implements ZooModelInterface {
     ArrayList<ZooObserver> zooObservers = new ArrayList<ZooObserver>();
@@ -72,14 +69,22 @@ public class ZooModel implements ZooModelInterface {
     public void setUpZoo() {
         System.out.println("Setting up Zoo...");
         Random random = new Random();
+        Random r = new Random();
         for (int i = 0; i < size; i++) {
             Enclosure e = new Enclosure(Integer.toString(i+1));
-            HashSet<Integer> pos = new HashSet<Integer>();
-            for (int j = 0; j < random.nextInt(5) + 1; j++) {
+            ArrayList<Integer> pos = new ArrayList<Integer>();
+            ArrayList<Integer> q = new ArrayList<Integer>();
+            for (int j = 0; j < random.nextInt(6) + 1; j++) {
                 pos.add(random.nextInt(animalsData.size()));
+                q.add(r.nextInt(30) + 1);
             }
-            for (Integer j: pos){
-                e.add(new Animal(animalsData.get(j)), random.nextInt(30) + 1);
+            int t = 0;
+            for (Integer po : pos) {
+                int l = q.get(t);
+                for (int k = 0; k < l; k++) {
+                    e.add(new Animal(animalsData.get(po)));
+                }
+                t++;
             }
             enclosures.add(e);
         }
@@ -92,41 +97,43 @@ public class ZooModel implements ZooModelInterface {
             feedAnimals(e);
             extraFeed(e);
             removeFood(e);
-            //increaseAge(e);
+            increaseAge(e);
         }
     }
 
     public void feedAnimals(Enclosure e) {
-        HashMap<Animalistic, Integer> as = e.getAnimals();
-        for (Animalistic a: as.keySet()) {
+        HashMap<String, Integer> al = (HashMap<String, Integer>) e.getAList().clone();
+        for (String name : al.keySet()) {
+            Animalistic a = e.getAnimalsByName(name).get(0);
             int l = 0;
 
             for (String s : a.getFoodDemand().keySet()) {
-                if (as.get(a) > l && e.getFoodStatus().containsKey(s)) {
+                if (al.get(a.getName()) > l && e.getFoodStatus().containsKey(s)) {
                     l += e.getFoodStatus().get(s) / a.getFoodDemand().get(s);
-                    if (l > as.get(a)) {
-                        l = as.get(a);
+                    if (l > al.get(a.getName())) {
+                        l = al.get(a.getName());
                     }
                     e.takeFood(s, l*a.getFoodDemand().get(s));
                 }
             }
-            if (as.get(a) > l) {
-                System.out.println(as.get(a) - l + " " + a.getName() + " starved to death.");
-                e.remove(a, as.get(a) - l);
+            if (al.get(a.getName()) > l) {
+                System.out.println(al.get(a.getName()) - l + " " + a.getName() + " starved to death.");
+                e.remove(a.getName(), al.get(a.getName()) - l);
             }
         }
     }
 
     public void extraFeed(Enclosure e) {
-        HashMap<Animalistic, Integer> as = e.getAnimals();
-        for (Animalistic a: as.keySet()) {
+        HashMap<String, Integer> al = (HashMap<String, Integer>) e.getAList().clone();
+        for (String name : al.keySet()) {
+            Animalistic a = e.getAnimalsByName(name).get(0);
             int l = 0;
 
             for (String s : a.getFoodDemand().keySet()) {
-                if (as.get(a) > l && e.getFoodStatus().containsKey(s)) {
+                if (al.get(a.getName()) > l && e.getFoodStatus().containsKey(s)) {
                     l += e.getFoodStatus().get(s) / (a.getFoodDemand().get(s)*2);
-                    if (l > as.get(a)) {
-                        l = as.get(a);
+                    if (l > al.get(a.getName())) {
+                        l = al.get(a.getName());
                     }
                     e.takeFood(s, l*2*a.getFoodDemand().get(s));
                 }
@@ -139,8 +146,14 @@ public class ZooModel implements ZooModelInterface {
                     if (d < 0.3)
                         n++;
                 }
-                System.out.println(n + " " + a.getName() + " spawned in Enclosure " + e.getName());
-                e.add(a, n);
+                if (n > 0) {
+                    System.out.println(n + " " + a.getName() + " spawned in Enclosure " + e.getName());
+                    for (int i = 0; i < n; i++) {
+                        Animal animal = new Animal(getAnimalData(a.getName()));
+                        animal.setCurrentAge(0);
+                        e.add(animal);
+                    }
+                }
             }
         }
     }
@@ -152,9 +165,24 @@ public class ZooModel implements ZooModelInterface {
     }
 
     public void increaseAge(Enclosure e) {
-        HashMap<Animalistic, Integer> as = e.getAnimals();
-        for (Animalistic a: as.keySet()) {
+        ArrayList<Animalistic> as = (ArrayList<Animalistic>) e.getAnimals().clone();
+        HashMap<String, Integer> l = new HashMap<String, Integer>();
+        for (Animalistic a: as) {
             a.setCurrentAge(a.getCurrentAge() + 1);
+            if (a.getCurrentAge() >= a.getMaxAge()) {
+                Random r = new Random();
+                double d = r.nextDouble();
+                if (d < 0.5){
+                    if (!l.containsKey(a.getName())){
+                        l.put(a.getName(), 0);
+                    }
+                    l.put(a.getName(), l.get(a.getName()) + 1);
+                    e.remove(a);
+                }
+            }
+        }
+        for (int i = 0; i < l.size(); i++) {
+            System.out.println(l.values().toArray()[i] + " " + l.keySet().toArray()[i] + " died of old age.");
         }
     }
 
@@ -184,6 +212,16 @@ public class ZooModel implements ZooModelInterface {
 
             System.out.println(ex.getMessage());
         }
+    }
+
+    public String[] getAnimalData (String name) {
+        String[] result = new String[4];
+        for (String[] animalsDatum : animalsData) {
+            if (animalsDatum[0].equals(name)) {
+                result = animalsDatum;
+            }
+        }
+        return result;
     }
 
     public void fillStorage() {
